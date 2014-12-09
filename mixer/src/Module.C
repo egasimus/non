@@ -808,6 +808,13 @@ Module::insert_menu_cb ( const Fl_Menu_ *m )
     
     if ( !strcmp( picked, "Aux" ) )
     {
+
+        if ( ninputs() == 0 )
+        {
+            fl_alert( "Cannot insert this module at this point in the chain" );
+            return;
+        }
+
         int n = 0;
         for ( int i = 0; i < chain()->modules(); i++ )
         {
